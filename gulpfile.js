@@ -11,6 +11,7 @@ var tar = require('gulp-tar');
 var gzip = require('gulp-gzip');
 var fs = require('fs');
 var sass = require('gulp-sass');
+var nodemon = require('gulp-nodemon');
 
 /*
   Task to clean up dist-server
@@ -164,6 +165,16 @@ gulp.task('install', ['package'], function() {
   return gulp.src('stage/**/*')
     .pipe(gulp.dest(config.shared));
 });
+
+gulp.task('dev', ['install'], function() {
+  nodemon({
+    watch: ['./src-client', './src-server', 'scss'],
+    ext: 'js,html,scss',
+    script: './dist-server/init.js',
+    tasks: ['install'],
+    env: { 'DEBUG' : 'aether:*,server,express:*' }
+  });
+})
 
 /*
   Point default task to build
