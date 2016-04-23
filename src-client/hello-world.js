@@ -1,6 +1,8 @@
 export class HelloWorld {
   constructor() {
     this.message = "Hello, World!";
+    this.attachedCount = 0;
+    console.log("Created new HelloWorld");
   }
 
   activate(params, routerConfig) {
@@ -10,5 +12,13 @@ export class HelloWorld {
     console.log(routerConfig);
     this.params = params.params;
     this.routerConfig = routerConfig;
+  }
+
+  attached() {
+    this.attachedCount += 1;
+  }
+
+  detached() {
+    this.attachedCount -= 1;
   }
 }
