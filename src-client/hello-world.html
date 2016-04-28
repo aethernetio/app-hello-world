@@ -1,6 +1,10 @@
 <template>
-  <p>Message: ${message}</p>
-  <p>Params: ${params}</p>
-  <p>moduleId: ${routerConfig.moduleId} (this can be used ot get the version)</p>
-  <p>attached: ${attachedCount}</p>
+  <
+  <form role="form" submit.delegate="welcome()">
+            <div class="form-group">
+                <label for="fn">Some Label</label>
+                <input type="text" value.bind="myDateTime" class="form-control" id="fn">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
 </template>
